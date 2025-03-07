@@ -1,11 +1,16 @@
 == Mindset Theme ==
 
-Contributors: 
+Contributors: Jonathon Leathers (FWD 40)
 Requires at least: 6.7
 Tested up to: 6.7
 Requires PHP: 5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+
+== Description ==
+
+A custom theme for the Mindset site.
 
 
 == Changelog ==
@@ -16,7 +21,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Copyright ==
 
-Mindset Theme WordPress Theme, (C) 2025 
+Mindset Theme WordPress Theme, (C) 2025 Jonathon Leathers (FWD 40)
 Mindset Theme is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
