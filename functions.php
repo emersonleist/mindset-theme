@@ -17,6 +17,16 @@ function mindset_enqueues() {
         array(),
         '12.1.0'
     );
+
+    //load scroll-to-top.js
+    wp_enqueue_script(
+        'mindset-scroll-to-top', 
+        get_theme_file_uri( 'assets/js/scroll-to-top.js' ), 
+        array(), 
+        wp_get_theme()->get( 'Version' ), 
+        array( 'strategy' => 'defer' ) 
+    );
+
 }
 add_action( 'wp_enqueue_scripts', 'mindset_enqueues' );
 
