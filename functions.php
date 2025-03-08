@@ -27,6 +27,16 @@ function mindset_enqueues() {
         array( 'strategy' => 'defer' ) 
     );
 
+    //load contact.js
+    if ( is_page( 14 ) ) {
+        wp_enqueue_script(
+            'mindset-contact-scripts', 
+            get_theme_file_uri( 'assets/js/contact.js' ), 
+            array( 'mindset-scroll-to-top' ), //dependency
+            wp_get_theme()->get( 'Version' ), 
+            array( 'strategy' => 'defer' ) 
+        );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'mindset_enqueues' );
 
