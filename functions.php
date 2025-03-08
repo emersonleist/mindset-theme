@@ -39,6 +39,10 @@ add_image_size( '400x500', 400, 500, true );
 
 // Crop images to 200px by 250px
 add_image_size( '200x250', 200, 250, true );
+// Crop images to 400px by 200px
+add_image_size( '400x200', 400, 200, true );
+// Crop images to 800px by 400px
+add_image_size( '800x400', 800, 400, true );
 }
 add_action( 'after_setup_theme', 'mindset_setup' );
 
@@ -47,6 +51,8 @@ function mindset_add_custom_image_sizes( $size_names ) {
 	$new_sizes = array(
 		'400x500' => __( '400x500', 'mindset-theme' ),
 		'200x250' => __( '200x250', 'mindset-theme' ),
+        '400x200' => __( '400x200', 'mindset-theme' ),
+		'800x400' => __( '800x400', 'mindset-theme' ),
 	);
 	return array_merge( $size_names, $new_sizes );
 }
