@@ -45,3 +45,9 @@ svg path {
 	opacity: 0;
 	color: #fff200;
 }
+
+article.wp-block-group::after {
+	content: "";
+	display: table;
+	clear: both;
+}
