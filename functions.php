@@ -32,5 +32,12 @@ add_action( 'wp_enqueue_scripts', 'mindset_enqueues' );
 
 function mindset_setup() {
     add_editor_style( get_stylesheet_uri() );
+
+    // Add image sizes
+    // Crop images to 400px by 500px
+add_image_size( '400x500', 400, 500, true );
+
+// Crop images to 200px by 250px
+add_image_size( '200x250', 200, 250, true );
 }
 add_action( 'after_setup_theme', 'mindset_setup' );
