@@ -11,3 +11,8 @@ function mindset_enqueues() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'mindset_enqueues' );
+
+function mindset_setup() {
+    add_editor_style( get_stylesheet_uri() );
+}
+add_action( 'after_setup_theme', 'mindset_setup' );
