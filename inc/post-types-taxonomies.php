@@ -185,9 +185,3 @@ function mindset_register_taxonomies() {
     register_taxonomy( 'fwd-work-category', array( 'fwd-work' ), $args );
 }
 add_action( 'init', 'mindset_register_taxonomies' );
-
-function mindset_rewrite_flush() {
-    mindset_register_custom_post_types();
-    flush_rewrite_rules();
-}
-add_action( 'after_switch_theme', 'mindset_rewrite_flush' );
