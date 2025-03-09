@@ -1,4 +1,13 @@
 {
+	"customTemplates": [
+		{
+			"name": "wp-custom-template-full-width-page",
+			"postTypes": [
+				"page"
+			],
+			"title": "Full Width Page"
+		}
+	],
 	"settings": {
 		"appearanceTools": true,
 		"color": {
@@ -315,15 +324,6 @@
 			"area": "uncategorized",
 			"name": "sidebar",
 			"title": "Sidebar"
-		}
-	],
-	"customTemplates": [
-		{
-			"name": "wp-custom-template-full-width-page",
-			"title": "Full Width Page",
-			"postTypes": [
-				"page"
-			]
 		}
 	],
 	"version": 3,

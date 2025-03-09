@@ -9,6 +9,7 @@
 function mindset_blocks_copyright_date_block_init() {
 	register_block_type( __DIR__ . '/build/copyright-date' );
 	register_block_type( __DIR__ . '/build/company-address' );
+	register_block_type( __DIR__ . '/build/company-email' );
 }
 add_action( 'init', 'mindset_blocks_copyright_date_block_init' );
 /**
