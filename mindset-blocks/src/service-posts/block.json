@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mindset-blocks/service-posts",
+	"version": "0.1.0",
+	"title": "Service Posts",
+	"category": "widgets",
+	"icon": "editor-kitchensink",
+	"description": "A block to output the service posts",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "copyright-date",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

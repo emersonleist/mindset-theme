@@ -1,0 +1,15 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.services-nav {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	border: 4px double var(--wp--preset--color--accent);
+	padding: 1rem;
+	gap: 1rem;
+}
