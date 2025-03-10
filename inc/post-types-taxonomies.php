@@ -180,7 +180,7 @@ $args = array(
     'rewrite'           => array( 'slug' => 'featured' ),
 );
  
-register_taxonomy( 'fwd-featured', array( 'fwd-work' ), $args );
+register_taxonomy( 'fwd-featured', array( 'fwd-work', 'fwd-testimonial' ), $args );
 
 //add service type taxonomy
 $labels = array(
