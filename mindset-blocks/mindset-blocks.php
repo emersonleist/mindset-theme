@@ -47,49 +47,70 @@ function mindset_register_custom_fields() {
 }
 add_action( 'init', 'mindset_register_custom_fields' );
 
-function fwd_render_service_posts( $attributes ) {
-    ob_start();
-    ?>
-    <div <?php echo get_block_wrapper_attributes(); ?>>
-        <?php
-        $args = array(
-            'post_type'      => 'fwd-service',
-            'posts_per_page' => -1,
-            'order'          => 'ASC',
-            'orderby'        => 'title'
-        );
- 
-        $query = new WP_Query( $args );
- 
-        if ( $query -> have_posts() ) {
- 
-            echo '<nav class="services-nav">';
-            
-            while ( $query -> have_posts() ) {
-                $query -> the_post();
-                echo '<a href="#'. esc_attr( get_the_ID() ) .'">'. esc_html( get_the_title() ) .'</a>';
-            }
-            wp_reset_postdata();
-            
-            echo '</nav>';
-        
-            echo '<section>';
-    
-            while ( $query -> have_posts() ) {
-                $query -> the_post();
- 
-                echo '<article id="'. esc_attr( get_the_ID() ) .'">';	
-                    echo '<h2>' . esc_html( get_the_title() ) . '</h2>';
-                    the_content();
-                echo '</article>';
-                
-            }
-            wp_reset_postdata();
- 
-            echo '</section>';
-        }
+	// Callback function for the Service Posts block
+    function fwd_render_service_posts( $attributes ) {
+        ob_start();
         ?>
-    </div>
-    <?php
-    return ob_get_clean();
-}
+        <div <?php echo get_block_wrapper_attributes(); ?>>
+            <?php
+            // Output the Service navigation
+            $args = array(
+                'post_type'      => 'fwd-service',
+                'posts_per_page' => -1,
+                'order'          => 'ASC',
+                'orderby'        => 'title'
+            );
+            $query = new WP_Query( $args );
+            if ( $query -> have_posts() ) {
+                echo '<nav class="services-nav">';
+                while ( $query -> have_posts() ) {
+                    $query -> the_post();
+                    echo '<a href="#'. esc_attr( get_the_ID() ) .'">'. esc_html( get_the_title() ) .'</a>';
+                }
+                wp_reset_postdata();
+                echo '</nav>';
+            }
+            
+            // Output the Service posts
+            $taxonomy = 'fwd-service-type';
+            $terms    = get_terms(
+                array(
+                    'taxonomy' => $taxonomy
+                )
+            );
+            if ( $terms && ! is_wp_error( $terms ) ) {
+                foreach( $terms as $term ) {
+                    $args = array(
+                        'post_type'      => 'fwd-service',
+                        'posts_per_page' => -1,
+                        'order'          => 'ASC',
+                        'orderby'        => 'title',
+                        'tax_query'      => array(
+                            array(
+                                'taxonomy' => $taxonomy,
+                                'field'    => 'slug',
+                                'terms'    => $term->slug,
+                            )
+                        ),
+                    );
+                    $query = new WP_Query( $args );
+                    if ( $query -> have_posts() ) {
+                        echo '<section>';
+                        echo '<h2>' . esc_html( $term->name ) . '</h2>';
+                        while ( $query -> have_posts() ) {
+                            $query -> the_post();
+                            echo '<article id="'. esc_attr( get_the_ID() ) .'">';	
+                                echo '<h3>' . esc_html( get_the_title() ) . '</h3>';
+                                the_content();
+                            echo '</article>';
+                        }
+                        wp_reset_postdata();
+                        echo '</section>';
+                    }
+                }
+            }
+            ?>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
